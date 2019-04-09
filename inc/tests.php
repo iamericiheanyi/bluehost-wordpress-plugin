@@ -85,4 +85,4 @@ function mm_jetpack_bluehost_only() {
 }
 
 /* Start individual tests */
-mm_require( MM_BASE_DIR . 'tests/loader.php' );
+mm_require( BLUEHOST_PLUGIN_DIR . '/tests/loader.php' );

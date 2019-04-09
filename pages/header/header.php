@@ -10,8 +10,8 @@
 				</div>
 			</div>
 			<?php
-			require_once( MM_BASE_DIR . 'pages/header/nav-primary.php' );
-			require_once( MM_BASE_DIR . 'pages/header/nav-sub.php' );
+			require_once( BLUEHOST_PLUGIN_DIR . '/pages/header/nav-primary.php' );
+			require_once( BLUEHOST_PLUGIN_DIR . '/pages/header/nav-sub.php' );
 			if ( 'bluehost' == mm_brand() ) {
 				echo '<div class="bluehost-loader"></div>';
 			}

@@ -93,7 +93,7 @@ function mm_marketplace_page() {
 	} else {
 		$section = 'themes';
 	}
-	mm_require( MM_BASE_DIR . 'pages/mojo-' . $section . '.php' );
+	mm_require( BLUEHOST_PLUGIN_DIR . '/pages/mojo-' . $section . '.php' );
 }
 
 function mm_plugins_premium_link() {
@@ -108,7 +108,7 @@ function mm_plugins_premium_link() {
 add_action( 'admin_head-plugin-install.php', 'mm_plugins_premium_link' );
 
 function mm_business_tools_page() {
-	mm_require( MM_BASE_DIR . 'pages/mojo-business-tools.php' );
+	mm_require( BLUEHOST_PLUGIN_DIR . '/pages/mojo-business-tools.php' );
 }
 
 function mm_performance_menu() {
@@ -117,7 +117,7 @@ function mm_performance_menu() {
 add_action( 'admin_menu', 'mm_performance_menu' );
 
 function mm_performance_page() {
-	mm_require( MM_BASE_DIR . 'pages/mojo-performance.php' );
+	mm_require( BLUEHOST_PLUGIN_DIR . '/pages/mojo-performance.php' );
 }
 
 function mm_home_menu() {
@@ -128,7 +128,7 @@ function mm_home_menu() {
 add_action( 'admin_menu', 'mm_home_menu' );
 
 function mm_home_page() {
-	mm_require( MM_BASE_DIR . 'pages/mojo-home.php' );
+	mm_require( BLUEHOST_PLUGIN_DIR . '/pages/mojo-home.php' );
 }
 
 function mm_staging_menu() {
@@ -142,22 +142,22 @@ function mm_staging_page() {
 	$env = get_option( 'staging_environment' );
 	switch ( $env ) {
 		case 'production':
-			require_once( MM_BASE_DIR . 'pages/staging-production.php' );
+			require_once( BLUEHOST_PLUGIN_DIR . '/pages/staging-production.php' );
 			break;
 
 		case 'staging':
-			require_once( MM_BASE_DIR . 'pages/staging-staging.php' );
+			require_once( BLUEHOST_PLUGIN_DIR . '/pages/staging-staging.php' );
 			break;
 
 		default:
-			require_once( MM_BASE_DIR . 'pages/staging-create.php' );
+			require_once( BLUEHOST_PLUGIN_DIR . '/pages/staging-create.php' );
 			break;
 	}
 	echo "<a target='_blank' href='https://goo.gl/forms/HNmqYgRkpzu9KQfM2' style='z-index: 10;position: fixed; padding: 4px 10px; color: #fff;background-color: #000;right:0px;bottom:0px;'>Staging Feedback</a>";
 }
 
 function mm_my_purchases_page() {
-	mm_require( MM_BASE_DIR . 'pages/mojo-purchases.php' );
+	mm_require( BLUEHOST_PLUGIN_DIR . '/pages/mojo-purchases.php' );
 }
 
 function mm_hosting_menu() {
@@ -180,7 +180,7 @@ function mm_item_search_menu() {
 add_action( 'admin_menu', 'mm_item_search_menu' );
 
 function mm_item_search_page() {
-	mm_require( MM_BASE_DIR . 'pages/mojo-search.php' );
+	mm_require( BLUEHOST_PLUGIN_DIR . '/pages/mojo-search.php' );
 }
 
 function mm_onboarding_menu() {
@@ -189,7 +189,7 @@ function mm_onboarding_menu() {
 add_action( 'admin_menu', 'mm_onboarding_menu' );
 
 function mm_onboarding_page() {
-	mm_require( MM_BASE_DIR . 'pages/mojo-onboarding.php' );
+	mm_require( BLUEHOST_PLUGIN_DIR . '/pages/mojo-onboarding.php' );
 }
 
 function mm_menu_redirects() {

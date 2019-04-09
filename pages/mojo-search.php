@@ -12,7 +12,7 @@ $response = mm_api_cache( $api_url );
 ?>
 <div id="mojo-wrapper" class="<?php echo mm_brand( 'mojo-%s-branding' );?>">
 	<?php
-	mm_require( MM_BASE_DIR . 'pages/header.php' );
+	mm_require( BLUEHOST_PLUGIN_DIR . '/pages/header.php' );
 	if ( ! is_wp_error( $response ) ) {
 		$body = json_decode( $response['body'] );
 		$items = $body->items;
@@ -105,7 +105,7 @@ $response = mm_api_cache( $api_url );
 
 	<?php
 	} else {
-		mm_require( MM_BASE_DIR . 'pages/api-unavailable.php' );
+		mm_require( BLUEHOST_PLUGIN_DIR . '/pages/api-unavailable.php' );
 	}
 ?>
 </div>

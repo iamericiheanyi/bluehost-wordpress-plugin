@@ -171,8 +171,8 @@ function mm_ux_log_activated() {
 	);
 	mm_ux_log( $event );
 }
-register_activation_hook( MM_BASE_DIR . 'mojo-marketplace.php', 'mm_ux_log_activated' );
-register_deactivation_hook( MM_BASE_DIR . 'mojo-marketplace.php', 'mm_ux_log_deactivated' );
+register_activation_hook( BLUEHOST_PLUGIN_DIR . '/mojo-marketplace.php', 'mm_ux_log_activated' );
+register_deactivation_hook( BLUEHOST_PLUGIN_DIR . '/mojo-marketplace.php', 'mm_ux_log_deactivated' );
 
 function mm_ux_log_theme_preview() {
 	global $theme;
@@ -224,7 +224,7 @@ function mm_ux_log_theme_category_mojo() {
 add_action( 'admin_footer', 'mm_ux_log_theme_category_mojo' );
 
 function mm_ux_log_plugin_version() {
-	$plugin = get_plugin_data( MM_BASE_DIR . 'mojo-marketplace.php' );
+	$plugin = get_plugin_data( BLUEHOST_PLUGIN_DIR . '/mojo-marketplace.php' );
 	$event = array(
 		't'		=> 'event',
 		'ec'	=> 'scheduled',

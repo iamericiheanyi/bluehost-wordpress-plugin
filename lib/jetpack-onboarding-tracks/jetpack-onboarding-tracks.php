@@ -115,7 +115,7 @@ register_activation_hook( __FILE__, array('JetpackOnboardingTracking', 'track_jp
 register_deactivation_hook( __FILE__, array('JetpackOnboardingTracking', 'track_jpo_tracks_deactivated') );
 
 // track the acivation/deactivation of Mojo on Bluehost
-if ( defined('MM_BASE_DIR') ) {
-	register_activation_hook( MM_BASE_DIR . "mojo-marketplace.php", array('JetpackOnboardingTracking', 'track_mojo_activated') );
-	register_deactivation_hook( MM_BASE_DIR . "mojo-marketplace.php", array('JetpackOnboardingTracking', 'track_mojo_deactivated') );
+if ( defined('BLUEHOST_PLUGIN_DIR') ) {
+	register_activation_hook( BLUEHOST_PLUGIN_DIR . '/mojo-marketplace.php', array('JetpackOnboardingTracking', 'track_mojo_activated') );
+	register_deactivation_hook( BLUEHOST_PLUGIN_DIR . '/mojo-marketplace.php', array('JetpackOnboardingTracking', 'track_mojo_deactivated') );
 }

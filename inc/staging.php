@@ -79,7 +79,7 @@ function mm_cl( $command, $args = null ) {
 		die;
 	}
 
-	$script = MM_BASE_DIR . 'lib/.staging';
+	$script = BLUEHOST_PLUGIN_DIR . '/lib/.staging';
 
 	if ( 0755 != (int) substr( sprintf( '%o', fileperms( $script ) ), -4 ) ) {
 		chmod( $script, 0755 );
@@ -222,7 +222,7 @@ add_action( 'wp_ajax_mm_sso_staging', 'mm_sso_staging' );
 
 function mm_interim() {
 	if ( isset( $_POST['template'] ) ) {
-		$interim = MM_BASE_DIR . 'pages/interim-' . sanitize_file_name( $_POST['template'] ) . '.php';
+		$interim = BLUEHOST_PLUGIN_DIR . '/pages/interim-' . sanitize_file_name( $_POST['template'] ) . '.php';
 		mm_require( $interim );
 	}
 	die;
@@ -231,7 +231,7 @@ add_action( 'wp_ajax_mm_interim', 'mm_interim' );
 
 function mm_modal() {
 	if ( isset( $_POST['template'] ) ) {
-		$interim = MM_BASE_DIR . 'pages/modal-' . sanitize_file_name( $_POST['template'] ) . '.php';
+		$interim = BLUEHOST_PLUGIN_DIR . '/pages/modal-' . sanitize_file_name( $_POST['template'] ) . '.php';
 		if ( file_exists( $interim ) ) {
 			?>
 			<div id="mm-modal-wrap">

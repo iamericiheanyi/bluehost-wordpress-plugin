@@ -48,7 +48,7 @@
 					</div>
 				</div>
 			</div>
-			<?php mm_require( MM_BASE_DIR . 'pages/navigation.php' ); ?>
+			<?php mm_require( BLUEHOST_PLUGIN_DIR . '/pages/navigation.php' ); ?>
 		</nav>
 	</div>
 </header>

@@ -4,7 +4,7 @@ if ( ! defined( 'WPINC' ) ) { die; }
 
 <div id="mojo-wrapper" class="<?php echo mm_brand( 'mojo-%s-branding' );?>">
 <?php
-require_once( MM_BASE_DIR . 'pages/header/header.php' );
+require_once( BLUEHOST_PLUGIN_DIR . '/pages/header/header.php' );
 $is_bluerock = file_exists( '/opt/cpanel/ea-php70/root/usr/bin/php-cgi' );
 $links = array(
 	'bluerock' => array(

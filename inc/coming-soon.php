@@ -134,10 +134,10 @@ add_action( 'admin_init', 'mm_cs_settings' );
 
 function mm_cs_content() {
 	$brand = mm_brand();
-	if ( 'mojo' != $brand && file_exists( MM_BASE_DIR . 'pages/coming-soon/' . $brand . '.php' ) ) {
-		require( MM_BASE_DIR . 'pages/coming-soon/' . $brand . '.php' );
+	if ( 'mojo' != $brand && file_exists( BLUEHOST_PLUGIN_DIR . '/pages/coming-soon/' . $brand . '.php' ) ) {
+		require( BLUEHOST_PLUGIN_DIR . '/pages/coming-soon/' . $brand . '.php' );
 	} else {
-		require( MM_BASE_DIR . 'pages/coming-soon/mojo.php' );
+		require( BLUEHOST_PLUGIN_DIR . '/pages/coming-soon/mojo.php' );
 	}
 }
 

@@ -3,7 +3,7 @@ if ( ! defined( 'WPINC' ) ) { die; }
 ?>
 <div id="mojo-wrapper" class="<?php echo mm_brand( 'mojo-%s-branding' );?>">
 <?php
-require_once( MM_BASE_DIR . 'pages/header/header.php' );
+require_once( BLUEHOST_PLUGIN_DIR . '/pages/header/header.php' );
 $defaults = array(
 	'page'    => 'disabled',
 	'browser' => 'disabled',

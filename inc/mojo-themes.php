@@ -32,7 +32,7 @@ function mm_add_theme_page() {
 add_action( 'admin_menu', 'mm_add_theme_page' );
 
 function mm_theme_page() {
-	mm_require( MM_BASE_DIR . 'pages/mojo-themes.php' );
+	mm_require( BLUEHOST_PLUGIN_DIR . '/pages/mojo-themes.php' );
 }
 
 function mm_theme_preview_page() {
@@ -50,7 +50,7 @@ function mm_theme_preview_page() {
 	}
 	</style>
 	<?php
-	mm_require( MM_BASE_DIR . '/pages/theme-preview.php' );
+	mm_require( BLUEHOST_PLUGIN_DIR . '/pages/theme-preview.php' );
 }
 
 //Help the theme authors with the capital P ;)
