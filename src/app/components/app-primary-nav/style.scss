@@ -2,8 +2,9 @@
   height: 33px;
   padding-top: 24px;
   padding-left: 24px;
+  padding-right: 24px;
   .tabs {
-    display: inline-block;
+    display: block;
     border-bottom: 1px solid #ddd;
     list-style: none;
     li {

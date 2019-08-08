@@ -13,6 +13,7 @@ class Bluehost_Admin_App_Page {
 	 * @var array
 	 */
 	protected static $subpages = array(
+		'Home',
 		'Themes',
 		'Plugins',
 		'Services',
@@ -72,7 +73,7 @@ class Bluehost_Admin_App_Page {
 	}
 
 	/**
-	 * Undocumented function
+	 * Add Submenu Pages to WordPress
 	 *
 	 * @return void
 	 */
@@ -80,6 +81,9 @@ class Bluehost_Admin_App_Page {
 		foreach( self::$subpages as $subpage ) {
 			$slug = strtolower( $subpage );
 			$subpage_slugs = array_map( 'strtolower', self::$subpages );
+			/**
+			 * Add /marketplace prefix for Marketplace routes
+			 */
 			if ( 'themes' === $slug || 'plugins' === $slug || 'services' === $slug ) {
 				$slug = 'marketplace/' . $slug;
 			}
@@ -95,6 +99,6 @@ class Bluehost_Admin_App_Page {
 	}
 
 	public function handle_subpage_redirect() {
-		echo 'failed';
+		// TODO: Add button to go to Plugin Home
 	}
 }

@@ -12,7 +12,7 @@ const AppPrimaryNavigation = () => (
 	<div id="app-primary-navigation">
 		<ul class="tabs">
 			<li className="tab">
-				<NavLink to="/">
+				<NavLink to="/home">
 					{__('Home', 'bluehost-wordpress-plugin')}
 				</NavLink>
 			</li>

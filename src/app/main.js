@@ -19,7 +19,6 @@ const AppMain = () => (
 	<main>
 		<Suspense fallback={ <div>Loading...</div> }>
 			<Switch>
-				{ /* <Route path="/spinner" component={ AppSpinner } /> */ }
 				<Route path="/home" render={ () => ( <HomeRoute /> ) } />
 				<Route path="/marketplace" exact render={ () => ( <MktRoute /> ) } />
 				<Route path="/marketplace/themes" exact render={ () => ( <ThemesRoute /> ) } />
