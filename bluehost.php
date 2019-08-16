@@ -71,6 +71,8 @@ require_once MM_BASE_DIR . 'inc/track-last-login.php';
 require_once MM_BASE_DIR . 'inc/performance.php';
 require_once MM_BASE_DIR . 'inc/partners.php';
 
+require_once MM_BASE_DIR . 'inc/rest-api/rest-api.php';
+
 mm_require( MM_BASE_DIR . 'inc/branding.php' );
 // mm_require( MM_BASE_DIR . 'updater.php' );
 
