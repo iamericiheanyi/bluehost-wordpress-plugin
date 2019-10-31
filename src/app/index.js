@@ -56,9 +56,10 @@ class App extends Component {
 
 	render() {
 		if (true === this.state.hasError) {
+			window.bhError = this.state.appError
 			return (
 				<div>
-					<AppError error={this.state.appError} />
+					<AppError />
 				</div>
 			);
 		}
@@ -67,8 +68,7 @@ class App extends Component {
 				{
 					({}) => (
 						<Router>
-							{/* <main id="bluehost-app-wrap" className="bluehost-app-wrap animated fadeIn fast"> */}
-							<main id="bluehost-app-wrap" className="bluehost-app-wrap">
+							<div id="bluehost-app-wrap" className="bluehost-app-wrap">
 								<a className="screen-reader-shortcut bluehost-spa-skip" href="#" onClick={ this.handleNavFocus } onKeyPress={ this.handleNavFocus }>
 									{ __( 'Skip to Navigation', 'bluehost-wordpress-plugin' ) }
 								</a>
@@ -84,7 +84,7 @@ class App extends Component {
 								<div tabIndex="-1" ref={ this.contentFocus }>
 									<Main />
 								</div>
-							</main>
+							</div>
 						</Router>
 					)
 				}

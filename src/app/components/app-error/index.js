@@ -1,8 +1,8 @@
 import {__} from '@wordpress/i18n';
 import {withState} from '@wordpress/compose';
+import { select } from '@wordpress/data';
 import axios from 'axios';
 import qs from 'qs';
-//import browser from 'browser-detect';
 
 import {AppButton as Button} from '@/components';
 import {ReactComponent as WarningIcon} from '@/assets/warning.svg';
@@ -14,30 +14,28 @@ const AppError = withState({
     errorReported: false,
     appError: null
 })(({errorReported, appError, setState}) => {
-    // const reportErrorToWP = () => {
-    //     console.log( 'do the error report' );
-    //     console.log( appError );
-    //     axios.post( 
-    //         location.origin + '/wp-json/bluehost/v1/errors/track', 
-    //         qs.stringify({
-    //             date: new Date(), 
-    //             message: appError.message,
-    //             browser: browser(),
-    //             wpUser: window.userSettings.uid ? window.userSettings.uid : 'Unknown'
-    //         })
-    //     ).then((response) => {
-    //         console.log( 'in then' );
-    //         console.dir(response);
-    //         setState({ errorReported: true });
-    //     }).catch((httpErr) => {
-    //         console.log( 'in catch' );
-    //         console.dir(httpErr);
-    //     }).finally(() => {
-    //         console.log( 'doing finally' );
-    //     });
-    // };
+    const reportErrorToWP = () => {
+        console.log( 'do the error report' );
+        axios.post( 
+            location.origin + '/wp-json/bluehost/v1/error/track', 
+            qs.stringify({
+                date: new Date(), 
+                message: window.bhError.message,
+                wpUser: window.userSettings.uid ? window.userSettings.uid : 'Unknown'
+            })
+        ).then((response) => {
+            console.log( 'in then' );
+            console.dir(response);
+            setState({ errorReported: true });
+        }).catch((httpErr) => {
+            console.log( 'in catch' );
+            console.dir(httpErr);
+        }).finally(() => {
+            console.log( 'doing finally' );
+        });
+    };
 
-    // reportErrorToWP();
+    reportErrorToWP();
 
     return (
         <div id="app-error">

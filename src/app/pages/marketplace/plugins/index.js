@@ -35,7 +35,7 @@ function PluginsPage({history}) {
     };
 
     return (
-        <Suspense fallback={<AppSpinner small/>}>
+        <Suspense fallback={<div />}>
             <Page
                 isLoading={!done || isLoading}
                 payload={payload}
@@ -43,7 +43,7 @@ function PluginsPage({history}) {
                 type="plugins"
             />
         </Suspense>
-    );
+    
 }
 
 export default withRouter(PluginsPage);

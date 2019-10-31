@@ -167,6 +167,7 @@ class Bluehost_Admin_App_Assets {
 	 * @param string $dist_url Base distribution URL.
 	 */
 	protected function page_js( $dist_url ) {
+		global $is_lynx, $is_gecko, $is_IE, $is_opera, $is_NS4, $is_safari, $is_chrome, $is_iphone;
 		wp_register_script(
 			'eig-wp-admin-ui-manifest',
 			$dist_url . 'admin-manifest.js',
@@ -200,8 +201,18 @@ class Bluehost_Admin_App_Assets {
 				'nonce'            => wp_create_nonce( mm_site_bin2hex() ),
 			),
 			'env'       => array(
-				'isPHP7'     => version_compare( phpversion(), '7.0.0' ) >= 0,
-				'phpVersion' => phpversion(),
+				'isPHP7'      => version_compare( phpversion(), '7.0.0' ) >= 0,
+				'phpVersion'  => phpversion(),
+				'browserData' => array(
+					'lynx' 		=> $is_lynx, 
+					'gecko' 	=> $is_gecko, 
+					'IE'		=> $is_IE, 
+					'opera'		=> $is_opera, 
+					'ns4'		=> $is_NS4, 
+					'safari'	=> $is_safari, 
+					'chrome'	=> $is_chrome, 
+					'ios'		=> $is_iphone,
+				),
 			),
 			'wordpress' => array(
 				'isJetpackActive'      => class_exists( 'Jetpack' ) ? 1 : 0,

@@ -35,7 +35,7 @@ function ServicesPage({history}) {
     };
 
     return (
-        <Suspense fallback={<AppSpinner small/>}>
+        <Suspense fallback={<div />}>
             <Page
                 isLoading={!done || isLoading}
                 payload={payload}
