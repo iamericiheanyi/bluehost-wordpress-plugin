@@ -3,11 +3,11 @@
  */
 import { Speak } from '@wordpress/a11y';
 import { select, dispatch } from '@wordpress/data';
-import { Component } from '@wordpress/element';
+import { Component, useEffect } from '@wordpress/element';
 /**
  * External dependencies
  */
-import { withRouter } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { chain, isString, replace, kebabCase, isEmpty } from 'lodash';
 
 /**
@@ -15,12 +15,38 @@ import { chain, isString, replace, kebabCase, isEmpty } from 'lodash';
  */
 import './style.scss';
 
+const BWABaseNewTemplate = (props) => {
+	const location = useLocation();
+	useEffect(() => {
+		let getPageSlug = ( location ) => {
+			return replace( replace( replace( location.pathname, '/marketplace', '' ), '/tools', '' ), '/', '' );
+		};
+		let data = {
+			...location,
+			pathnameKebab: kebabCase( location.pathname ),
+			isTopLevel: select('bluehost/plugin').getAppPages().includes(getPageSlug(location)),
+			slug: getPageSlug( location ),
+			slugKebab: getPageSlug( location ),
+		};
+	}, [location]);
+	// console.log('its dat data friend');
+	// console.log(data)
+	return (
+		<section
+			tabIndex="-1"
+			// ref={ ( container ) => ( this.container = container ) }
+			// className={ 'base-template animated fadeIn page-fade-speed ' + this.props.className }
+			className={ 'base-template animated fadeIn page-fade-speed' }
+		>
+			{ props.children }
+		</section>
+	);
+};
+
 class BWABaseTemplate extends Component {
 	componentDidMount() {
 		// recieve this.props.state.setFocus
 		this.handleContainerFocus();
-		const currentLocation = this.getCurrentLocation();
-		this.maybeAugmentWPMenu();
 		// if ( ! isEmpty( select('bluehost/plugin').getAppPages() ) && currentLocation.isTopLevel ) {
 		this.handleWordPressMenuActive( currentLocation );
 		// } else {
@@ -33,37 +59,6 @@ class BWABaseTemplate extends Component {
 		const { location } = this.props;
 		if ( location.state && location.state.setFocus ) {
 			this.container.focus( { preventScroll: true } );
-		}
-	}
-
-	getCurrentLocation() {
-		const { location } = this.props;
-		return {
-			...location,
-			pathnameKebab: kebabCase( location.pathname ),
-			// isTopLevel: select('bluehost/plugin').getAppPages().includes(this.getSlug(location)),
-			isTopLevel: true,
-			slug: this.getSlug( location ),
-			slugKebab: this.getSlug( location ),
-		};
-	}
-
-	maybeAugmentWPMenu() {
-		const menuNodes = window.document.querySelectorAll( '#toplevel_page_bluehost > ul > li' );
-		const menuItems = Array.from( menuNodes );
-		menuItems.splice( 0, 2 );
-		menuItems.forEach( function( li ) {
-			const className = kebabCase( li.innerText );
-			li.classList.add( 'bluehost-wp-menu-item', className );
-		} );
-
-		try {
-			const elem = window.document.querySelector( 'a.toplevel_page_bluehost' );
-			if ( elem.href.includes( 'admin.php?page=bluehost' ) ) {
-				elem.href = location.origin + '/wp-admin/admin.php?page=bluehost#/home';
-			}
-		} catch ( e ) {
-			console.log( 'Couldn\'t find Bluehost Menu Element to swap href' );
 		}
 	}
 
@@ -90,11 +85,6 @@ class BWABaseTemplate extends Component {
 		} );
 	}
 
-	getSlug( location ) {
-		const raw = isString( location ) ? location : location.pathname;
-		return replace( replace( replace( raw, '/marketplace', '' ), '/tools', '' ), '/', '' );
-	}
-
 	render() {
 		return (
 			<section
@@ -108,4 +98,4 @@ class BWABaseTemplate extends Component {
 	}
 }
 
-export default withRouter( BWABaseTemplate );
+export default BWABaseNewTemplate;

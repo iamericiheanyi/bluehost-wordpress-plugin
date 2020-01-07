@@ -21,8 +21,7 @@ const Comments = ( { oldPostComments, closeInterval, perPage, toggleSetting, upd
 			<SettingsGroup>
 				<SettingsToggle
 					label={ __( 'Disable comments for old posts', 'bluehost-wordpress-plugin' ) }
-					checked={ oldPostComments }
-					onChange={ () => toggleSetting( 'disableCommentsOldPosts' ) }
+					settingKey="disableCommentsOldPosts"
 				/>
 				<SettingsSelect
 					label={ commentsLabel }

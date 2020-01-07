@@ -20,13 +20,11 @@ const SiteControls = ( { isComingSoon, isSSOActive, toggleSetting } ) => {
 			<SettingsGroup>
 				<SettingsToggle
 					label={ __( 'Coming Soon Page', 'bluehost-wordpress-plugin' ) }
-					checked={ isComingSoon }
-					onChange={ () => toggleSetting( 'comingSoon' ) }
+					settingKey="comingSoon"
 				/>
 				<SettingsToggle
 					label={ __( 'Single Sign-on with Bluehost', 'bluehost-wordpress-plugin' ) }
-					checked={ isSSOActive }
-					onChange={ () => toggleSetting( 'sso' ) }
+					settingKey="sso"
 				/>
 			</SettingsGroup>
 		</SettingsSection>

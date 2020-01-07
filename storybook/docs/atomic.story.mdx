@@ -6,7 +6,9 @@ import { Meta } from '@storybook/addon-docs/blocks';
 
 The Bluehost Plugin WordPress Admin application is organized using an Atomic Design system.
 
-Atomic design draws from chemistry concepts and vocabulary to classify components in a reusable design system.
+Atomic design draws from chemistry concepts and vocabulary to classify components in a reusable design system where components are sorted using a combination of size, complexity and usage context.
+
+By using an Atomic approach, components are right-sized, predictable, versitale and resilient as the application evolves.
 
 ## Components Are Grouped Into...
 
@@ -20,13 +22,13 @@ From smallest (and most reusable) to largest (and often bespoke):
 
 ## Understanding Atoms
 
-Atoms are the smallest, reusable unit of Components in a system.
+Atoms are the smallest, reusable unit of Components in a system. They're used directly for elementary interface pices or composed to make other Atomic components.
 
 #### Identifying characteristics
-* Atoms are highly-reusable throughout an interface.
-* Atoms never contain other Atoms.
+* Atoms are _highly-reusable_ throughout an interface.
+* Atoms _*never*_ contain other Atoms.
 * Atoms are in their most elemental form -- they cannot be further reduced without ceasing to be functional.
-* Atoms _often_ render as a single element.
+* Atoms _often_ render as a single DOM element (but not always).
 
 Atoms can be as simple as a Heading, Paragraph or Input field.
 
@@ -39,7 +41,7 @@ So, in our system, there are a few exceptions to the single-element rule.
 
 As a result, as we refine our system, some Atoms may evolve into Molecules.
 
-Examples:
+#### Atom Examples:
 * Paragraph
 * Heading
 * Input field
@@ -60,7 +62,7 @@ In general, Molecules are a composition of Atoms & HTML elements.
 * Molecules should aim to be agnostic of _purpose_ -- Cards over Product Cards, Section over Home Section.
 * Molecules may change drastically in visual style based on Props, but contain the same structure of Atoms & Elements.
 
-Examples:
+#### Molecule Examples:
 * Search field (with Input and Button atoms).
 * Button Group
 * Cards
@@ -78,7 +80,7 @@ Organisms are discrete parts of an interface that may contain smaller organisms,
 * Organisms are composed of Atoms, HTML elements and/or Molecules.
 * Organisms often have a specific purpose.
 
-Examples:
+#### Organism Examples:
 * Headers
 * Navigation
 * Sidebars
@@ -97,7 +99,7 @@ Templates can extend other Templates. In the Bluehost Plugin WordPress Admin app
 * Templates should not be implemented _inside_ other Templates (those are Organisms) -- they should only extend other Templates.
 * Templates aren't partial pieces of the Page (Organisms) -- they aren't headers, footers, sidebars or blocks assembled.
 
-Examples:
+#### Template Examples:
 * Base
 * Common
 * Marketplace

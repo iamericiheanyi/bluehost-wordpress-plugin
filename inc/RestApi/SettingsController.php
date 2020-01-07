@@ -36,6 +36,18 @@ class SettingsController extends \WP_REST_Controller {
 			]
 		);
 
+		register_rest_route(
+			$this->namespace,
+			'/settings/single',
+			[
+				[
+					'methods'             => \WP_REST_Server::READABLE,
+					'callback'            => [ $this, 'get_single_item' ],
+					'permission_callback' => [ $this, 'check_permission' ],
+				]
+			]
+		);
+
 	}
 
 	/**
@@ -47,6 +59,26 @@ class SettingsController extends \WP_REST_Controller {
 	 */
 	public function get_item( $request ) {
 		return new \WP_REST_Response( $this->get_current_settings() );
+	}
+
+	/**
+	 * Retrieves a single setting handled by the plugin.
+	 *
+	 * @param \WP_REST_Request $request Full details about the request.
+	 *
+	 * @return \WP_REST_Response
+	 */
+	public function get_single_item( $request ) {
+		if ( is_object( $request ) && ! empty( $request->get_json_params() ) ) {
+			$key = array_key_first( $request->get_json_params() );
+			$settings = $this->get_current_settings();
+			if ( ! empty( $settings[ $key ] ) ) {
+				return new \WP_REST_Response( array( $key => $settings[ $key ] ) );
+			} else {
+				return new \WP_REST_Response( array( 'fail' => 'whale' ) );
+			}
+		}
+
 	}
 
 	/**
@@ -116,7 +148,7 @@ class SettingsController extends \WP_REST_Controller {
 			}
 		}
 
-		return $this->get_item( $request );
+		return $this->get_single_item( $request );
 	}
 
 	/**

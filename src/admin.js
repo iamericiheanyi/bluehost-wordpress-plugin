@@ -22,7 +22,7 @@ import adminInitHelpers from './admin-init-helpers';
  * When DOM is ready, load app on root element, replacing #app-loader markup.
  */
 domReady( () => {
-	{ adminInitHelpers(); }
+	adminInitHelpers();
 	render(
 		<App />,
 		document.getElementById( WP_PAGE_ROOT_ELEMENT )

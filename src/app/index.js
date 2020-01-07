@@ -9,6 +9,7 @@ import { __ } from '@wordpress/i18n';
  * External dependencies
  */
 import { HashRouter as Router } from 'react-router-dom';
+import { kebabCase } from 'lodash';
 /**
  * Internal dependencies
  */
@@ -46,6 +47,7 @@ class BluehostWordPressApp extends Component {
 		};
 
 		dispatch( 'bluehost/plugin' ).fetchWindowData();
+		this.maybeAugmentWPMenu();
 	}
 
 	handleNavFocus( event ) {
@@ -56,6 +58,19 @@ class BluehostWordPressApp extends Component {
 	handleContentFocus( event ) {
 		event.preventDefault(); // no anchor jumps that done bork hash-routing
 		this.contentFocus.current.focus( { preventScroll: true } );
+	}
+
+	maybeAugmentWPMenu() {
+		const menuNodes = window.document.querySelectorAll( '#toplevel_page_bluehost > ul > li' );
+		const menuItems = Array.from( menuNodes );
+		menuItems.splice( 0, 2 );
+		menuItems.forEach( function( li ) {
+			li.classList.add( 'bwa-wp-menu-item', kebabCase( li.innerText ) );
+		} );
+		const topElem = window.document.querySelector( 'a.toplevel_page_bluehost' );
+		if ( topElem.href.includes( 'admin.php?page=bluehost' ) ) {
+			topElem.href = topElem.href + '#/home';
+		}
 	}
 
 	componentDidCatch( error, info ) {

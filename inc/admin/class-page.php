@@ -11,6 +11,13 @@ class Bluehost_Admin_App_Page {
 	protected static $instance;
 
 	/**
+	 * Parent page slug
+	 *
+	 * @var string
+	 */
+	public static $parent_slug = 'bluehost';
+
+	/**
 	 * Subpage Titles (get lowercased for slugs)
 	 *
 	 * @var array
@@ -22,6 +29,26 @@ class Bluehost_Admin_App_Page {
 		'Services',
 		'Staging',
 		'Settings',
+	);
+
+	/**
+	 * Marketplace Pages
+	 *
+	 * @var array
+	 */
+	public static $market_pages = array(
+		'Themes' 	=> 'marketplace/themes',
+		'Plugins'	=> 'marketplace/plugins',
+		'Services'	=> 'marketplace/services',
+	);
+
+	/**
+	 * Tools Pages
+	 *
+	 * @var array
+	 */
+	public static $tools_pages = array(
+		'Staging' 	=> 'tools/staging',
 	);
 
 	/**
@@ -54,7 +81,7 @@ class Bluehost_Admin_App_Page {
 			'Bluehost',
 			$this->primary_title_markup(),
 			'manage_options',
-			'bluehost',
+			self::$parent_slug,
 			array( $this, 'menu_page_output' ),
 			'data:image/svg+xml;base64,PHN2ZyBpZD0iTGF5ZXJfMSIgZGF0YS1uYW1lPSJMYXllciAxIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1OC4wMyA1OC4xMyI+PGRlZnM+PHN0eWxlPi5jbHMtMXtmaWxsOiNmZmY7fTwvc3R5bGU+PC9kZWZzPjx0aXRsZT5iaC13aGl0ZTwvdGl0bGU+PGcgaWQ9Il9Hcm91cF8iIGRhdGEtbmFtZT0iJmx0O0dyb3VwJmd0OyI+PGcgaWQ9Il9Hcm91cF8yIiBkYXRhLW5hbWU9IiZsdDtHcm91cCZndDsiPjxnIGlkPSJfR3JvdXBfMyIgZGF0YS1uYW1lPSImbHQ7R3JvdXAmZ3Q7Ij48cmVjdCBpZD0iX1BhdGhfIiBkYXRhLW5hbWU9IiZsdDtQYXRoJmd0OyIgY2xhc3M9ImNscy0xIiB3aWR0aD0iMTYuMiIgaGVpZ2h0PSIxNi4yMSIvPjxyZWN0IGlkPSJfUGF0aF8yIiBkYXRhLW5hbWU9IiZsdDtQYXRoJmd0OyIgY2xhc3M9ImNscy0xIiB4PSIyMC45MSIgd2lkdGg9IjE2LjIxIiBoZWlnaHQ9IjE2LjIxIi8+PHJlY3QgaWQ9Il9QYXRoXzMiIGRhdGEtbmFtZT0iJmx0O1BhdGgmZ3Q7IiBjbGFzcz0iY2xzLTEiIHg9IjQxLjgyIiB3aWR0aD0iMTYuMjEiIGhlaWdodD0iMTYuMjEiLz48cmVjdCBpZD0iX1BhdGhfNCIgZGF0YS1uYW1lPSImbHQ7UGF0aCZndDsiIGNsYXNzPSJjbHMtMSIgeT0iMjAuOTYiIHdpZHRoPSIxNi4yIiBoZWlnaHQ9IjE2LjIxIi8+PHJlY3QgaWQ9Il9QYXRoXzUiIGRhdGEtbmFtZT0iJmx0O1BhdGgmZ3Q7IiBjbGFzcz0iY2xzLTEiIHg9IjIwLjkxIiB5PSIyMC45NiIgd2lkdGg9IjE2LjIxIiBoZWlnaHQ9IjE2LjIxIi8+PHJlY3QgaWQ9Il9QYXRoXzYiIGRhdGEtbmFtZT0iJmx0O1BhdGgmZ3Q7IiBjbGFzcz0iY2xzLTEiIHg9IjQxLjgyIiB5PSIyMC45NiIgd2lkdGg9IjE2LjIxIiBoZWlnaHQ9IjE2LjIxIi8+PHJlY3QgaWQ9Il9QYXRoXzciIGRhdGEtbmFtZT0iJmx0O1BhdGgmZ3Q7IiBjbGFzcz0iY2xzLTEiIHk9IjQxLjkyIiB3aWR0aD0iMTYuMiIgaGVpZ2h0PSIxNi4yMSIvPjxyZWN0IGlkPSJfUGF0aF84IiBkYXRhLW5hbWU9IiZsdDtQYXRoJmd0OyIgY2xhc3M9ImNscy0xIiB4PSIyMC45MSIgeT0iNDEuOTIiIHdpZHRoPSIxNi4yMSIgaGVpZ2h0PSIxNi4yMSIvPjxyZWN0IGlkPSJfUGF0aF85IiBkYXRhLW5hbWU9IiZsdDtQYXRoJmd0OyIgY2xhc3M9ImNscy0xIiB4PSI0MS44MiIgeT0iNDEuOTIiIHdpZHRoPSIxNi4yMSIgaGVpZ2h0PSIxNi4yMSIvPjwvZz48L2c+PC9nPjwvc3ZnPg==',
 			1
@@ -91,18 +118,18 @@ class Bluehost_Admin_App_Page {
 			/**
 			 * Add /marketplace prefix for Marketplace routes
 			 */
-			if ( 'themes' === $slug || 'plugins' === $slug || 'services' === $slug ) {
-				$slug = 'marketplace/' . $slug;
+			if ( isset( self::$market_pages[ $subpage ] ) ) {
+				$slug = self::$market_pages[ $subpage ];
 			}
-			if ( 'staging' === $slug ) {
-				$slug = 'tools/' . $slug;
+			if ( isset( self::$tools_pages[ $subpage ] ) ) {
+				$slug = self::$tools_pages[ $subpage ];
 			}
 			add_submenu_page(
 				'bluehost',
 				$subpage,
 				$subpage,
 				'manage_options',
-				'bluehost#/' . $slug,
+				self::$parent_slug . '#/' . $slug,
 				array( $this, 'handle_subpage_redirect' )
 			);
 		}

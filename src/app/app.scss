@@ -33,17 +33,17 @@ body.toplevel_page_bluehost {
   }
 }
 
-body:not(.bluehost-admin-keynav) {
-  .base-template:focus,
-  a[aria-current="page"]:focus,
-  a.bluehostTab:focus,
-  #bluehost-nav-popup-inner a:focus,
-  #slideout-icons-wrap a:focus,
-  .slideout-menu-wrap a.bluehostTab:focus {
-    outline: none;
-    box-shadow: none;
-  }
-}
+// body:not(.bluehost-admin-keynav) {
+//   .base-template:focus,
+//   a[aria-current="page"]:focus,
+//   a.bluehostTab:focus,
+//   #bluehost-nav-popup-inner a:focus,
+//   #slideout-icons-wrap a:focus,
+//   .slideout-menu-wrap a.bluehostTab:focus {
+//     outline: none;
+//     box-shadow: none;
+//   }
+// }
 
 #bluehost-app {
   display: block;

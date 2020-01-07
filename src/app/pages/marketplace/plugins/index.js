@@ -7,7 +7,7 @@ import {
 	BWAMarketplaceTemplate,
 } from '@/components/templates';
 
-function PluginsPage( { history } ) {
+const PluginsPage = ( { history } ) => {
 	const [ { done, isError, isLoading, payload } ] = useMojoApi( 'plugins', { count: 1000 } );
 
 	if ( isError ) {

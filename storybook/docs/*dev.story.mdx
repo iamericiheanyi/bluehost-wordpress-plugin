@@ -4,6 +4,87 @@ import { Meta } from '@storybook/addon-docs/blocks';
 
 # Getting Started with Bluehost Plugin Development
 
+This Plugin 
+
 ## Directory Structure
 
-## Common Commands
+* `/assets` - Built JavaScript & CSS for the WordPress Admin Single-Page Application.
+* `/cypress` - Cypress tests (e2e) for the WordPress Admin Single-Page Application.
+* `/inc` - PHP files for the Admin app, CLI commands, REST endpoints and other integrations.
+* `/lib` - Scripts
+* `/pages` - PHP pages including the Coming Soon page and Theme Preview page.
+* `/src` - Source JavaScript & CSS for the WordPress Admin Single-Page Application.
+* `/storybook` - Documentation and Storybook.js stories for Atomic components in `/src`.
+* `/upgrades` - Upgrade routines for specific versions
+
+## Working on the WordPress Admin Single-Page Application
+
+The SPA we inject into the WordPress Admin starts with an `add_menu_page()` callback in `/inc/admin/class-page.php`. This registers a top-level Admin Page with WordPress containing the root element the SPA renders into.
+
+The required assets are registered with WordPress in `/inc/admin/class-assets.php`.
+
+### Running the development mode
+
+1. `cd` into the Plugin's root directory.
+2. Run `npm run develop`, which will run @wordpress/scripts in development mode and watch files for changes.
+3. Make changes to application files in `/src`.
+
+### Running a build
+
+1. `cd` into the Plugin's root directory.
+2. Run `npm run build`, which will run @wordpress/scripts in production mode, minifying files.
+3. Remember to make any necessary version bumps in the main Plugin file prior to packaging a release.
+
+### Running the Storybook in development mode
+
+The Storybook provides a great development environment for refining, testing and adjusting the included Atomic Components.
+
+1. `cd` into the Plugin's root directory.
+2. Run `npm run storybook:dev`
+3. Storybook should open a new browser window with the Storybook running on localhost:open_port.
+
+### Running to Cypress e2e tests
+
+The Cypress tests help assure the SPA is rendering and functioning as-expected.
+
+Before running the Cypress tests, you need to copy the contents of the `cypress-sample.env.json` into `cypress.json`.
+
+```json
+{
+  "baseUrl": "",
+  "wpUsername": "",
+  "wpPassword": ""
+}
+```
+
+The `baseUrl` is the URL for your local WordPress installation, i.e. `https://localhost:8888` or `https://bluehost.lndo.site`.
+
+The wpUsername and wpPassword should be a WordPress User with administrative privlidges to load the Bluehost SPA.
+
+1. `cd` into the Plugin's root directory.
+2. Run `npm run test:e2e`
+
+### Running JavaScript unit tests
+
+1. `cd` into the Plugin's root directory.
+2. Run `npm run test:unit`
+
+### Running all the linters
+
+1. `cd` into the Plugin's root directory.
+2. Run `npm run lint`.
+
+### Running the JavaScript linter
+
+1. `cd` into the Plugin's root directory.
+2. Run `npm run lint:js`
+
+### Running the PHP linter
+
+1. `cd` into the Plugin's root directory.
+2. Run `npm run lint:php`
+
+### Running the styles linter
+
+1. `cd` into the Plugin's root directory.
+2. Run `npm run lint:css`

@@ -104,7 +104,7 @@ const BWAMarketplaceTemplate = ( { className = 'bluehost-marketplace', isLoading
 			<section className={ `${ className }__header` }>
 				<div className={ `${ className }__header-primary` }>
 					<BWAHeading level="h2" size={ 1 } className="marketplace-page-title">{ marketplacePageTitle( type ) }</BWAHeading>
-					<div className={ `${ className }__BWAPagination-container` }>
+					<div className={ `marketplace__pagination-container` }>
 						<BWAPagination callback={ setPageNumber } currentPage={ pageNumber } pageCount={ pageCount } />
 					</div>
 				</div>

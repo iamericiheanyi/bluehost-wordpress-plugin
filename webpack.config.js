@@ -60,8 +60,8 @@ const appWebpackConfig = {
 	...wpScriptsConfig,
 	entry: { admin: './src/admin.js' },
 	output: {
-		path: path.resolve( __dirname, './assets' ),
-		publicPath: '../wp-content/plugins/bluehost-wordpress-plugin/assets/',
+		path: path.resolve( __dirname, './assets/dist' ),
+		publicPath: '../wp-content/plugins/bluehost-wordpress-plugin/assets/dist/',
 		filename: '[name].js',
 	},
 	externals: [

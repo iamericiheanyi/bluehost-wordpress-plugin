@@ -5,12 +5,12 @@ import { TAB } from '@wordpress/keycodes';
 
 export default () => {
 	/**
-  * Register Helpers
-  *
-  * @param e
-  */
-	function bluehostHandleFirstTab( e ) {
-		if ( e.keyCode === TAB ) {
+  	* Register Helpers
+  	*
+  	* @param e
+  	*/
+	const bluehostHandleFirstTab = ( event ) => {
+		if ( event.keyCode === TAB ) {
 			document.body.classList.add( 'bluehost-admin-keynav' );
 			window.removeEventListener( 'keydown', bluehostHandleFirstTab );
 		}

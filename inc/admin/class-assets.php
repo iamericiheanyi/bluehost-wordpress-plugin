@@ -61,7 +61,7 @@ class Bluehost_Admin_App_Assets {
 		// li#toplevel_page_bluehost a:after {
 		// border: 0px transparent !important;
 		// }</style>
-		$this->url = trailingslashit( MM_BASE_URL ) . 'assets/';
+		$this->url = trailingslashit( MM_BASE_URL ) . 'assets/dist/';
 		add_action( 'admin_enqueue_scripts', array( $this, 'register_global_assets' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'register_assets' ) );
 	}
